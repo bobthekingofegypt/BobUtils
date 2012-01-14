@@ -1,0 +1,232 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A15BE1C714C1C2EB009DE3DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15BE1C614C1C2EB009DE3DE /* Foundation.framework */; };
+		A15BE1CD14C1C2EB009DE3DE /* BobUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A15BE1CC14C1C2EB009DE3DE /* BobUtils.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A15BE1C314C1C2EB009DE3DE /* libBobUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBobUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A15BE1C614C1C2EB009DE3DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A15BE1CA14C1C2EB009DE3DE /* BobUtils-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BobUtils-Prefix.pch"; sourceTree = "<group>"; };
+		A15BE1CB14C1C2EB009DE3DE /* BobUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BobUtils.h; sourceTree = "<group>"; };
+		A15BE1CC14C1C2EB009DE3DE /* BobUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BobUtils.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A15BE1C014C1C2EB009DE3DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A15BE1C714C1C2EB009DE3DE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A15BE1B814C1C2EA009DE3DE = {
+			isa = PBXGroup;
+			children = (
+				A15BE1C814C1C2EB009DE3DE /* BobUtils */,
+				A15BE1C514C1C2EB009DE3DE /* Frameworks */,
+				A15BE1C414C1C2EB009DE3DE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A15BE1C414C1C2EB009DE3DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A15BE1C314C1C2EB009DE3DE /* libBobUtils.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A15BE1C514C1C2EB009DE3DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A15BE1C614C1C2EB009DE3DE /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A15BE1C814C1C2EB009DE3DE /* BobUtils */ = {
+			isa = PBXGroup;
+			children = (
+				A15BE1CB14C1C2EB009DE3DE /* BobUtils.h */,
+				A15BE1CC14C1C2EB009DE3DE /* BobUtils.m */,
+				A15BE1C914C1C2EB009DE3DE /* Supporting Files */,
+			);
+			path = BobUtils;
+			sourceTree = "<group>";
+		};
+		A15BE1C914C1C2EB009DE3DE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A15BE1CA14C1C2EB009DE3DE /* BobUtils-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A15BE1C114C1C2EB009DE3DE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A15BE1C214C1C2EB009DE3DE /* BobUtils */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A15BE1D014C1C2EB009DE3DE /* Build configuration list for PBXNativeTarget "BobUtils" */;
+			buildPhases = (
+				A15BE1BF14C1C2EB009DE3DE /* Sources */,
+				A15BE1C014C1C2EB009DE3DE /* Frameworks */,
+				A15BE1C114C1C2EB009DE3DE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BobUtils;
+			productName = BobUtils;
+			productReference = A15BE1C314C1C2EB009DE3DE /* libBobUtils.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A15BE1BA14C1C2EA009DE3DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Richard Martin";
+			};
+			buildConfigurationList = A15BE1BD14C1C2EA009DE3DE /* Build configuration list for PBXProject "BobUtils" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A15BE1B814C1C2EA009DE3DE;
+			productRefGroup = A15BE1C414C1C2EB009DE3DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A15BE1C214C1C2EB009DE3DE /* BobUtils */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A15BE1BF14C1C2EB009DE3DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A15BE1CD14C1C2EB009DE3DE /* BobUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A15BE1CE14C1C2EB009DE3DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A15BE1CF14C1C2EB009DE3DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A15BE1D114C1C2EB009DE3DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/BobUtils.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BobUtils/BobUtils-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A15BE1D214C1C2EB009DE3DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/BobUtils.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BobUtils/BobUtils-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A15BE1BD14C1C2EA009DE3DE /* Build configuration list for PBXProject "BobUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A15BE1CE14C1C2EB009DE3DE /* Debug */,
+				A15BE1CF14C1C2EB009DE3DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A15BE1D014C1C2EB009DE3DE /* Build configuration list for PBXNativeTarget "BobUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A15BE1D114C1C2EB009DE3DE /* Debug */,
+				A15BE1D214C1C2EB009DE3DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A15BE1BA14C1C2EA009DE3DE /* Project object */;
+}

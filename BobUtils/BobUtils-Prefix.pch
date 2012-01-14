@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'BobUtils' target in the 'BobUtils' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
