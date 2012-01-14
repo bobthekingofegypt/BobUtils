@@ -8,15 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		A15BE1C714C1C2EB009DE3DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A15BE1C614C1C2EB009DE3DE /* Foundation.framework */; };
-		A15BE1CD14C1C2EB009DE3DE /* BobUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A15BE1CC14C1C2EB009DE3DE /* BobUtils.m */; };
+		A15BE1EF14C1F71F009DE3DE /* BobCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A15BE1E914C1F71F009DE3DE /* BobCache.h */; };
+		A15BE1F014C1F71F009DE3DE /* BobCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A15BE1EA14C1F71F009DE3DE /* BobCache.m */; };
+		A15BE1F114C1F71F009DE3DE /* BobImageLoadOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = A15BE1EB14C1F71F009DE3DE /* BobImageLoadOperation.h */; };
+		A15BE1F214C1F71F009DE3DE /* BobImageLoadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A15BE1EC14C1F71F009DE3DE /* BobImageLoadOperation.m */; };
+		A15BE1F314C1F71F009DE3DE /* LoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = A15BE1ED14C1F71F009DE3DE /* LoadingView.h */; };
+		A15BE1F414C1F71F009DE3DE /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = A15BE1EE14C1F71F009DE3DE /* LoadingView.m */; };
+		A15BE1F614C1F757009DE3DE /* BobPhotoSource.h in Headers */ = {isa = PBXBuildFile; fileRef = A15BE1F514C1F757009DE3DE /* BobPhotoSource.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A15BE1C314C1C2EB009DE3DE /* libBobUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBobUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15BE1C614C1C2EB009DE3DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A15BE1CA14C1C2EB009DE3DE /* BobUtils-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BobUtils-Prefix.pch"; sourceTree = "<group>"; };
-		A15BE1CB14C1C2EB009DE3DE /* BobUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BobUtils.h; sourceTree = "<group>"; };
-		A15BE1CC14C1C2EB009DE3DE /* BobUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BobUtils.m; sourceTree = "<group>"; };
+		A15BE1E914C1F71F009DE3DE /* BobCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BobCache.h; sourceTree = "<group>"; };
+		A15BE1EA14C1F71F009DE3DE /* BobCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BobCache.m; sourceTree = "<group>"; };
+		A15BE1EB14C1F71F009DE3DE /* BobImageLoadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BobImageLoadOperation.h; sourceTree = "<group>"; };
+		A15BE1EC14C1F71F009DE3DE /* BobImageLoadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BobImageLoadOperation.m; sourceTree = "<group>"; };
+		A15BE1ED14C1F71F009DE3DE /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		A15BE1EE14C1F71F009DE3DE /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		A15BE1F514C1F757009DE3DE /* BobPhotoSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BobPhotoSource.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +70,13 @@
 		A15BE1C814C1C2EB009DE3DE /* BobUtils */ = {
 			isa = PBXGroup;
 			children = (
-				A15BE1CB14C1C2EB009DE3DE /* BobUtils.h */,
-				A15BE1CC14C1C2EB009DE3DE /* BobUtils.m */,
+				A15BE1F514C1F757009DE3DE /* BobPhotoSource.h */,
+				A15BE1E914C1F71F009DE3DE /* BobCache.h */,
+				A15BE1EA14C1F71F009DE3DE /* BobCache.m */,
+				A15BE1EB14C1F71F009DE3DE /* BobImageLoadOperation.h */,
+				A15BE1EC14C1F71F009DE3DE /* BobImageLoadOperation.m */,
+				A15BE1ED14C1F71F009DE3DE /* LoadingView.h */,
+				A15BE1EE14C1F71F009DE3DE /* LoadingView.m */,
 				A15BE1C914C1C2EB009DE3DE /* Supporting Files */,
 			);
 			path = BobUtils;
@@ -81,6 +97,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A15BE1EF14C1F71F009DE3DE /* BobCache.h in Headers */,
+				A15BE1F114C1F71F009DE3DE /* BobImageLoadOperation.h in Headers */,
+				A15BE1F314C1F71F009DE3DE /* LoadingView.h in Headers */,
+				A15BE1F614C1F757009DE3DE /* BobPhotoSource.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +155,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A15BE1CD14C1C2EB009DE3DE /* BobUtils.m in Sources */,
+				A15BE1F014C1F71F009DE3DE /* BobCache.m in Sources */,
+				A15BE1F214C1F71F009DE3DE /* BobImageLoadOperation.m in Sources */,
+				A15BE1F414C1F71F009DE3DE /* LoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +247,7 @@
 				A15BE1D214C1C2EB009DE3DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
