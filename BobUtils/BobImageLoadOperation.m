@@ -1,3 +1,11 @@
+//
+//  BobImageLoadOperation.h
+//  BobUtils
+//
+//  Copyright (c) 2011 Richard Martin. All rights reserved.
+//  Licensed under the terms of the BSD License, see LICENSE.txt
+//
+
 #import "BobImageLoadOperation.h"
 
 
@@ -8,7 +16,9 @@
 
 @implementation BobImageLoadOperation
 
-@synthesize image = image_, delegate, bobCache;
+@synthesize image = image_;
+@synthesize delegate;
+@synthesize bobCache;
 
 -(id) initWithPhotoSource:(id<BobPhotoSource>) photoSource {
     self = [super init];

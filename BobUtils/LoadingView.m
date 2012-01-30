@@ -1,9 +1,9 @@
 //
-//  LoadingView.m
-//  BobPhoto
+//  LoadingView.h
+//  BobUtils
 //
-//  Created by Richard Martin on 03/04/2011.
-//  Copyright 2011 Richard Martin. All rights reserved.
+//  Copyright (c) 2011 Richard Martin. All rights reserved.
+//  Licensed under the terms of the BSD License, see LICENSE.txt
 //
 
 #import "LoadingView.h"

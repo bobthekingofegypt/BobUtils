@@ -1,9 +1,9 @@
 //
-//  BobDiskLoadOperation.h
-//  BobPhoto
+//  BobImageLoadOperation.h
+//  BobUtils
 //
-//  Created by Richard Martin on 12/03/2011.
-//  Copyright 2011 Richard Martin. All rights reserved.
+//  Copyright (c) 2011 Richard Martin. All rights reserved.
+//  Licensed under the terms of the BSD License, see LICENSE.txt
 //
 
 #import <UIKit/UIKit.h>
@@ -29,6 +29,6 @@
 @end
 
 @protocol BobImageLoadOperationDelegate <NSObject>
--(void) loadImage:(UIImage *) i;
+-(void) imageLoaded:(UIImage *) image;
 -(void) imageLoadFailed;
 @end
