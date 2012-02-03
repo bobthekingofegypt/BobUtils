@@ -8,6 +8,7 @@
 
 #import "BobImageLoadOperation.h"
 
+#define kStatusResponseOK 200
 
 @interface BobImageLoadOperation()
 -(void)cache:(NSData *)imageData;
@@ -16,11 +17,10 @@
 
 @implementation BobImageLoadOperation
 
-@synthesize image = image_;
 @synthesize delegate;
 @synthesize bobCache;
 
--(id) initWithPhotoSource:(id<BobPhotoSource>) photoSource {
+-(id) initWithPhotoSource:(BobPhotoSource *) photoSource {
     self = [super init];
     if (self) {
         photoSource_ = [photoSource retain];
@@ -31,74 +31,101 @@
 
 -(void) dealloc {
     [photoSource_ release];
-    [image_ release];
     [bobCache release];
     
     [super dealloc];
 }
 
--(void)main {
-    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+-(CGDataProviderRef) loadWebResource:(NSError **)error {
+    NSData *imageData = [self getStoredImage];
+    if (imageData) {
+        return CGDataProviderCreateWithCFData((CFDataRef)imageData);
+    } 
+      
+    NSURL *url = [NSURL URLWithString:[photoSource_ location]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        
+    NSError *urlResponseError;
+    NSURLResponse *response;
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&urlResponseError]; 
+        
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+        
+    if ([httpResponse statusCode] == kStatusResponseOK) {
+        mimeType = [response MIMEType];
+        [self cache:result];
+        
+        return CGDataProviderCreateWithCFData((CFDataRef)result);
+    }
+    
+    *error = [NSError errorWithDomain:@"failed to load remote image" code:2 userInfo:nil];
+    return NULL;
+}
+
+-(CGDataProviderRef) createDataProvider:(NSError **)error {
     CGDataProviderRef dataProvider;
-    bool success = NO;
-    NSString *mimeType = nil;
-    //NSLog(@"%@", [photoSource_ location]);
+    
     if ([[photoSource_ location] hasPrefix:@"http"]) {
-        NSData *imageData = [self getStoredImage];
-        if (imageData) {
-            success = YES;
-            dataProvider = CGDataProviderCreateWithCFData((CFDataRef)imageData);
-        } else {
-            NSURL *url = [NSURL URLWithString:[photoSource_ location]];
-            NSURLRequest *request = [NSURLRequest requestWithURL:url];
-            
-            NSError *error;
-            NSURLResponse *response;
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-            NSData *result = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error]; 
-            
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-            
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-            //NSLog(@"Status code %d", [httpResponse statusCode] );
-            if ([httpResponse statusCode] == 200) {
-                success = YES;
-                mimeType = [response MIMEType];
-            
-                dataProvider = CGDataProviderCreateWithCFData((CFDataRef)result);
-            
-                [self cache:result];
-            }
-        }
+        dataProvider = [self loadWebResource:error];
     } else {
-
-        success = YES;
-
         dataProvider = CGDataProviderCreateWithFilename([[photoSource_ location] UTF8String]);
     }
     
-    if (!success) {
-        NSLog(@"No data provider");
-        [delegate imageLoadFailed];
+    return dataProvider;
+}
+
+-(CGImageRef) createImageRef:(CGDataProviderRef) dataProvider {
+    if ([[photoSource_ location] hasSuffix:@".png"] || [mimeType isEqualToString:@"image/png"]) {
+        return CGImageCreateWithPNGDataProvider(dataProvider, NULL, NO, 
+                                                 kCGRenderingIntentDefault);
+    } 
+    
+    return CGImageCreateWithJPEGDataProvider(dataProvider, NULL, NO, 
+                                                  kCGRenderingIntentDefault);
+}
+
+-(void) loadGifImage:(CGDataProviderRef) dataProvider {
+    UIImage *image = [UIImage imageWithData:(NSData*)dataProvider];
+    [bobCache addObject:image forKey:[photoSource_ location]];
+    
+    if (image) {
+        [delegate bobImageLoadOperation:self imageLoaded:image];
+    } else {
+        NSError *error = [NSError errorWithDomain:@"failed to gif image" code:1 userInfo:nil];
+        [delegate bobImageLoadOperation:self imageLoadFailed:error];
+    }
+}
+
+-(void) main {
+    NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+    
+    NSError *error = nil;
+    CGDataProviderRef dataProvider = [self createDataProvider:&error];
+    if (!dataProvider) {
+        [delegate bobImageLoadOperation:self imageLoadFailed:error];
         return;
     }
     
-    CGImageRef image;
-    
-    if ([[photoSource_ location] hasSuffix:@".png"] || [mimeType isEqualToString:@"image/png"]) {
-        image = CGImageCreateWithPNGDataProvider(dataProvider, NULL, NO, 
-                                         kCGRenderingIntentDefault);
+    if ([photoSource_ imageType] == ImageTypeGIF || 
+            [[photoSource_ location] hasSuffix:@".gif"] || 
+            [mimeType isEqualToString:@"image/gif"]) {
+        [self loadGifImage:dataProvider];
     } else {
-        image = CGImageCreateWithJPEGDataProvider(dataProvider, NULL, NO, 
-                                         kCGRenderingIntentDefault);
+        CGImageRef image = [self createImageRef:dataProvider];
+        
+        [self performSelectorOnMainThread:@selector(preloadImage:) 
+                               withObject:[NSValue valueWithPointer:image] waitUntilDone:YES];
+        
+        CGImageRelease(image);
     }
     
     CGDataProviderRelease(dataProvider);
     
-    [self performSelectorOnMainThread:@selector(preloadImage:) 
-                           withObject:[NSValue valueWithPointer:image] waitUntilDone:YES];
-    
-    CGImageRelease(image);
     [pool release];
     
     return;
@@ -106,21 +133,26 @@
 
 -(void) preloadImage:(NSValue *) value  {
     CGImageRef imageRef = [value pointerValue];
-    UIImage *i = nil;
+    UIImage *image = nil;
     if ([photoSource_ retina]) {
-        i = [UIImage imageWithCGImage:imageRef scale:2.0f orientation:UIImageOrientationUp];
+        image = [UIImage imageWithCGImage:imageRef scale:2.0f orientation:UIImageOrientationUp];
     } else {
-        i = [UIImage imageWithCGImage:imageRef];
+        image = [UIImage imageWithCGImage:imageRef];
     }
-    [bobCache addObject:i forKey:[photoSource_ location]];
-    if (i) {
-        [delegate loadImage:i];
+   
+    [bobCache addObject:image forKey:[photoSource_ location]];
+    
+    if (image) {
+        [delegate bobImageLoadOperation:self imageLoaded:image];
+    } else {
+        NSError *error = [NSError errorWithDomain:@"failed to preload image" code:3 userInfo:nil];
+        [delegate bobImageLoadOperation:self imageLoadFailed:error];
     }
 }
 
 -(void)cache:(NSData *)imageData {
 	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES); 
-	NSString* imagesDirectory = [NSString stringWithFormat:@"%@/bobphoto",[paths objectAtIndex:0]];
+	NSString* imagesDirectory = [NSString stringWithFormat:@"%@/bobimagecache",[paths objectAtIndex:0]];
 	
 	NSFileManager *fileman = [[NSFileManager alloc] init];
 	if (![fileman fileExistsAtPath:imagesDirectory]) {
@@ -141,7 +173,7 @@
 	
 	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, 
 														 NSUserDomainMask, YES); 
-	NSString* imagesDirectory = [NSString stringWithFormat:@"%@/bobphoto",[paths objectAtIndex:0]];
+	NSString* imagesDirectory = [NSString stringWithFormat:@"%@/bobimagecache",[paths objectAtIndex:0]];
     NSString *key = [photoSource_ cacheKey];
 
 	NSString* filenameStr = [imagesDirectory

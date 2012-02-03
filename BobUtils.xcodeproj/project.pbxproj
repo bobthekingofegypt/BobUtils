@@ -14,7 +14,8 @@
 		A15BE1F214C1F71F009DE3DE /* BobImageLoadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A15BE1EC14C1F71F009DE3DE /* BobImageLoadOperation.m */; };
 		A15BE1F314C1F71F009DE3DE /* LoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = A15BE1ED14C1F71F009DE3DE /* LoadingView.h */; };
 		A15BE1F414C1F71F009DE3DE /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = A15BE1EE14C1F71F009DE3DE /* LoadingView.m */; };
-		A15BE1F614C1F757009DE3DE /* BobPhotoSource.h in Headers */ = {isa = PBXBuildFile; fileRef = A15BE1F514C1F757009DE3DE /* BobPhotoSource.h */; };
+		A1927A3114D7362500140B54 /* BobPhotoSource.h in Headers */ = {isa = PBXBuildFile; fileRef = A1927A2F14D7362500140B54 /* BobPhotoSource.h */; };
+		A1927A3214D7362500140B54 /* BobPhotoSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A1927A3014D7362500140B54 /* BobPhotoSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +28,8 @@
 		A15BE1EC14C1F71F009DE3DE /* BobImageLoadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BobImageLoadOperation.m; sourceTree = "<group>"; };
 		A15BE1ED14C1F71F009DE3DE /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		A15BE1EE14C1F71F009DE3DE /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
-		A15BE1F514C1F757009DE3DE /* BobPhotoSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BobPhotoSource.h; sourceTree = "<group>"; };
+		A1927A2F14D7362500140B54 /* BobPhotoSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BobPhotoSource.h; sourceTree = "<group>"; };
+		A1927A3014D7362500140B54 /* BobPhotoSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BobPhotoSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,13 +72,14 @@
 		A15BE1C814C1C2EB009DE3DE /* BobUtils */ = {
 			isa = PBXGroup;
 			children = (
-				A15BE1F514C1F757009DE3DE /* BobPhotoSource.h */,
 				A15BE1E914C1F71F009DE3DE /* BobCache.h */,
 				A15BE1EA14C1F71F009DE3DE /* BobCache.m */,
 				A15BE1EB14C1F71F009DE3DE /* BobImageLoadOperation.h */,
 				A15BE1EC14C1F71F009DE3DE /* BobImageLoadOperation.m */,
 				A15BE1ED14C1F71F009DE3DE /* LoadingView.h */,
 				A15BE1EE14C1F71F009DE3DE /* LoadingView.m */,
+				A1927A2F14D7362500140B54 /* BobPhotoSource.h */,
+				A1927A3014D7362500140B54 /* BobPhotoSource.m */,
 				A15BE1C914C1C2EB009DE3DE /* Supporting Files */,
 			);
 			path = BobUtils;
@@ -100,7 +103,7 @@
 				A15BE1EF14C1F71F009DE3DE /* BobCache.h in Headers */,
 				A15BE1F114C1F71F009DE3DE /* BobImageLoadOperation.h in Headers */,
 				A15BE1F314C1F71F009DE3DE /* LoadingView.h in Headers */,
-				A15BE1F614C1F757009DE3DE /* BobPhotoSource.h in Headers */,
+				A1927A3114D7362500140B54 /* BobPhotoSource.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +161,7 @@
 				A15BE1F014C1F71F009DE3DE /* BobCache.m in Sources */,
 				A15BE1F214C1F71F009DE3DE /* BobImageLoadOperation.m in Sources */,
 				A15BE1F414C1F71F009DE3DE /* LoadingView.m in Sources */,
+				A1927A3214D7362500140B54 /* BobPhotoSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

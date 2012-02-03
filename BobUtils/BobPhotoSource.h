@@ -6,17 +6,30 @@
 //  Licensed under the terms of the BSD License, see LICENSE.txt
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 typedef enum {
-   ImageTypePNG,
-   ImageTypeJPG,
+    ImageTypeNotSet = 0,
+    ImageTypePNG,
+    ImageTypeJPG,
     ImageTypeGIF
 } ImageType;
 
-/** Any photo source object must adopt the BobPhotoSource protocol. 
- */
-@protocol BobPhotoSource <NSObject>
+
+@interface BobPhotoSource : NSObject {
+    NSString *imageLocation;
+    NSString *imageLocationRetina;
+    NSString *imageCacheKey;
+
+    BOOL cached;
+    BOOL retina;
+    
+    ImageType imageType;
+}
+
+@property (nonatomic, copy) NSString *imageLocation;
+@property (nonatomic, copy) NSString *imageLocationRetina;
+@property (nonatomic, copy) NSString *imageCacheKey;
 
 /** returns the url location of the image */
 -(NSString *) location;
@@ -27,7 +40,6 @@ typedef enum {
 /** The key to be used when caching the images */
 -(NSString *) cacheKey;
 
-@optional
 /** Return the type of the image that is at the location of this photosource */
 -(ImageType) imageType;
 
