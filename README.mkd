@@ -1,0 +1,13 @@
+# BobUtils 
+
+BobUtils is a place to collect useful utility libraries.
+
+# Contents
+
+__BobCache__: A simple LRU style in-memory cache
+
+__BobImageLoadOperation__: An NSOperation subclass for loading images from disk or network on a seperate thread
+
+__BobPhotoSource__: A holder class for referencing location of images well adjusting for retina if available
+
+__LoadingView__: A UIView with a centered activity indicator
